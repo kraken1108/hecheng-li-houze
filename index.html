@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#226858">
+  <meta name="description" content="合成李厚泽：点一点，碰一碰，把五种表情合成大厚泽！">
+  <title>合成李厚泽 · 表情大作战</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<main class="app">
+  <header><div class="edition">厚泽限定 · 表情大作战 <span>VOL. 01</span></div><div class="title-row"><h1>合成<span>李厚泽</span><i>✦</i></h1><button id="help" class="icon-button" aria-label="查看玩法">?</button></div><p class="intro">从小表情，一路合成大厚泽。</p></header>
+  <section class="dashboard" aria-label="游戏得分"><div><span>本局得分</span><strong id="score">0</strong></div><div><span>个人最高</span><strong id="best">0</strong></div><div class="next-card"><div><span>下一颗</span><b id="next-name">发呆厚泽</b></div><img id="next" alt="下一颗表情"></div></section>
+  <section class="play-area"><div class="board-top"><span><i></i> 放轻松，慢慢合成</span><span id="level-text">最高 Lv.1</span></div><canvas id="game" tabindex="0" aria-label="合成游戏：手指拖动选择位置，松手投放；键盘左右移动，空格投放"></canvas><div id="toast" role="status" aria-live="polite"></div><div class="board-bottom">手指拖动瞄准 <span>·</span> 松手落下 <span>·</span> 同级碰撞升级</div></section>
+  <div class="actions"><button id="restart" class="restart">↻ 再来一局</button><button id="sfx" class="sfx" aria-pressed="true">♪ 合成音已开</button><button id="music" class="music" aria-pressed="false">♫ 音乐已关</button><select id="track" aria-label="背景音乐"><option value="xiaopingguo.ogg">小苹果</option><option value="jimo.ogg">不是因为寂寞才想你</option></select></div>
+  <section class="collection"><div class="collection-title"><h2>厚泽进化图鉴</h2><span>五种表情 × 五种形状</span></div><div id="gallery" class="gallery"></div></section>
+  <footer>今天，你合成大厚泽了吗？ <span>✦</span></footer>
+</main>
+<dialog id="help-dialog"><button class="dialog-close" aria-label="关闭玩法">×</button><span class="dialog-star">✦</span><h2>厚泽合成指南</h2><p>手指在游戏区拖动，选择落点，松手就会掉下一颗厚泽。</p><p>两个<strong>同等级</strong>的表情相碰，会合成更大的厚泽。合到 Lv.9，再碰一次就能获得双倍奖励！</p><p>延续之前的自由模式：没有倒计时，没有失败线，尽情合成。最高分保存在当前设备。</p><button class="primary" id="got-it">知道啦，开玩！</button></dialog>
+<dialog id="restart-dialog"><h2>再开一局？</h2><p>本局分数将清零，个人最高分会保留。</p><div class="dialog-actions"><button id="cancel-restart">接着玩</button><button class="primary" id="confirm-restart">重新开始</button></div></dialog>
+<script src="game.js?v=4"></script>
+</body></html>
