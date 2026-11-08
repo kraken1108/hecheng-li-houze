@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#276756">
+<meta name="description" content="李厚泽表情连连看：五种表情，80格大棋盘，找到相同照片，最多两次转弯就能消除。">
+<title>厚泽连连看 · 表情消除计划</title>
+<style>
+:root{--ink:#244e40;--green:#276756;--paper:#fcf9ef;--muted:#8a9585;--gold:#f1cb69}*{box-sizing:border-box}body{margin:0;background:#e7eee5;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}.app{max-width:540px;margin:24px auto;padding:25px 20px 12px;background:var(--paper);border-radius:28px;box-shadow:0 20px 70px #284c411a}.edition{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:2px}.title{display:flex;justify-content:space-between;align-items:center;margin-top:11px}h1{font-size:36px;font-weight:950;letter-spacing:-1.6px;margin:0}h1 span{color:#d6a63d;margin-left:6px;font-size:24px;vertical-align:top}.subtitle{font-size:12px;letter-spacing:1px;color:var(--muted);margin:5px 0 17px}button,select{font:inherit;cursor:pointer}.icon{border:1px solid #d1dccc;background:none;width:31px;height:31px;color:var(--green);border-radius:50%;font-weight:800}.stats{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;padding:13px 16px;background:#efeedf;border:1px solid #e2e5d5;border-radius:16px;margin-bottom:12px}.stats span{display:block;font-size:10px;color:#82907b}.stats b{display:block;font-size:25px;margin-top:3px;line-height:1.15;letter-spacing:-.5px}.stats small{font-size:13px;color:#9aa38c;font-weight:500}.board-frame{border:2px solid var(--green);border-radius:20px;overflow:hidden;box-shadow:0 5px #d1ddc6;background:#e7eedc}.board-bar{display:flex;align-items:center;justify-content:space-between;background:var(--green);color:#eef4df;padding:11px 13px;font-size:10px;letter-spacing:.5px}.board-bar i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:5px}.pause-btn{border:0;background:#ffffff1a;border-radius:6px;color:#f3f5e8;font-size:10px;padding:4px 9px}.board-shell{position:relative;padding:15px;background-image:radial-gradient(#b4c9a355 1px,transparent 1px);background-size:16px 16px}.grid{display:grid;grid-template-columns:repeat(var(--cols,8),minmax(0,1fr));gap:4px}.tile{display:block;position:relative;aspect-ratio:1;border:2px solid #fffdf3;padding:0;border-radius:8px;background:#fffdf3;overflow:hidden;box-shadow:0 2px 0 #597a5426;touch-action:manipulation;transition:transform .13s,opacity .2s,border-color .13s;min-width:0}.tile img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.35);transform-origin:50% 53%;pointer-events:none;user-select:none;-webkit-user-drag:none}.tile[data-type="2"] img{transform-origin:50% 87%;transform:scale(1.5)}.tile.selected{border-color:#f0bb3a;box-shadow:0 0 0 2px #e8b33a;transform:translateY(-2px) scale(1.03);z-index:2}.tile.hinted{animation:hint 1s ease-in-out 2}.tile.matched{transform:scale(.45);opacity:0}.tile.empty{visibility:hidden;pointer-events:none}.tile.wrong{animation:shake .23s}.tile:focus-visible{outline:3px solid #efa52f;outline-offset:2px}.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:3}.links polyline{stroke:#fff8da;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px #d8a125)}.links polyline+polyline{stroke:#eab333;stroke-width:2}.board-note{padding:10px 6px;text-align:center;background:#dfe8d2;font-size:10px;color:#70846a}.progress-track{height:3px;background:#d4dfc6}.progress-track div{height:100%;width:0;background:#e7bd52;transition:width .2s}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 9px}.controls button{border:1px solid #d0dec5;border-radius:11px;background:#e8efdd;color:#426c46;height:40px;font-size:12px;font-weight:700}.controls button:nth-child(2){background:#f6e7b5;border-color:#ead79b;color:#887033}.controls button:disabled{opacity:.45;cursor:default}.settings{display:flex;gap:8px}.settings select,.settings button{min-width:0;border:1px solid #d9dfcf;background:transparent;border-radius:10px;color:#7c8974;height:34px;font-size:11px;padding:0 11px}.settings select{flex:1}.settings button{flex:1}.rules{font-size:11px;color:#929b89;text-align:center;margin:15px 0 5px;line-height:1.8}footer{text-align:center;letter-spacing:1px;font-size:10px;color:#a1a98f;padding:11px 0 3px}footer span{color:#d0aa50}.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:.2s;background:#275b4eee;color:#fff7d9;padding:11px 20px;border-radius:24px;font-size:12px;z-index:20;white-space:nowrap;max-width:95vw}.toast.visible{opacity:1;transform:translate(-50%,0)}dialog{border:0;border-radius:23px;background:var(--paper);color:var(--ink);width:calc(100% - 44px);max-width:350px;padding:28px;box-shadow:0 20px 80px #12382944}dialog::backdrop{background:#183e326b;backdrop-filter:blur(4px)}dialog h2{margin:0 0 12px;font-size:23px}dialog p{font-size:13px;line-height:1.8;color:#7a8870}.dialog-buttons{display:flex;gap:8px;margin-top:22px}.dialog-buttons button{flex:1;border:0;border-radius:11px;padding:12px;background:#e6eddc;color:#63805d;font-size:13px}.dialog-buttons .primary{background:var(--green);color:white}.win-star{color:#dcad43;font-size:42px;display:block;text-align:center;margin-bottom:10px}.win-metric{font-size:32px!important;color:var(--green)!important;font-weight:800;text-align:center;margin:16px 0 4px}.win-sub{text-align:center;font-size:12px!important}.modal-close{position:absolute;right:14px;top:10px;border:0;background:none;font-size:24px;color:#99a18f}@keyframes hint{50%{border-color:#e8aa22;box-shadow:0 0 0 3px #f2c55b;transform:scale(1.05)}}@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}@media(max-width:570px){body{background:var(--paper)}.app{margin:0;padding:calc(18px + env(safe-area-inset-top)) 13px calc(8px + env(safe-area-inset-bottom));border-radius:0;box-shadow:none}h1{font-size:33px}.subtitle{margin-bottom:13px}.board-shell{padding:13px}.stats{padding:11px 14px}.controls{margin-top:16px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<header><div class="edition">厚泽限定 · 表情消除计划 <span>PAIR UP</span></div><div class="title"><h1>厚泽连连看<span>✦</span></h1><button class="icon" id="help" aria-label="查看玩法">?</button></div><p class="subtitle">一样的表情，要在一起。</p></header>
+<section class="stats" aria-label="本局进度"><div><span>已消除</span><b><em id="pairs" style="font-style:normal">0</em><small id="total"> / 40 对</small></b></div><div><span>本局用时</span><b id="time">00:00</b></div><div><span>最快通关</span><b id="best">—</b></div></section>
+<section class="board-frame"><div class="board-bar"><span><i></i><span id="mode-label">8 × 10 · 80 格</span></span><button class="pause-btn" id="pause">Ⅱ 暂停</button></div><div class="board-shell" id="shell"><div class="grid" id="grid" aria-label="连连看棋盘"></div><svg class="links" id="links" aria-hidden="true"></svg></div><div class="board-note" id="note" role="status" aria-live="polite">选两张相同照片，连线最多转弯两次</div><div class="progress-track"><div id="progress"></div></div></section>
+<div class="controls"><button id="hint">✧ 提示 <span id="hint-count">3</span></button><button id="shuffle">⇄ 洗牌 <span id="shuffle-count">3</span></button><button id="sound" aria-pressed="true">♪ 提示音开</button></div>
+<div class="settings"><select id="size" aria-label="棋盘大小"><option value="8,10" selected>中大棋盘 · 80 格</option><option value="6,8">轻松棋盘 · 48 格</option><option value="8,12">大棋盘 · 96 格</option></select><button id="restart">↻ 重新开始</button></div>
+<p class="rules">连线可以绕到棋盘外；中间不能穿过其他照片。<br>没有倒计时，没路可走时会自动洗牌。</p><footer>找到你的表情搭子 <span>✦</span></footer>
+</main><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog id="help-dialog"><button class="modal-close" aria-label="关闭玩法">×</button><h2>怎么连，都开心</h2><p>点击两张相同照片：只要能用<strong>最多转弯两次</strong>的线连接，中间没有其他照片，就能消除。</p><p>连线可以从棋盘外绕过去。每局有 3 次提示和 3 次洗牌；没有可消除组合时，会免费自动洗牌。</p><p>从第一次选照片开始计时，暂停和切到后台不计时。消除全部照片即可通关！</p><div class="dialog-buttons"><button class="primary" id="close-help">开玩！</button></div></dialog>
+<dialog id="pause-dialog"><h2>休息一下</h2><p>计时已暂停，棋盘也在等你。</p><div class="dialog-buttons"><button class="primary" id="resume">继续连连看</button></div></dialog>
+<dialog id="restart-dialog"><h2>开始新的一局？</h2><p>本局进度会清空，最快通关记录会保留。</p><div class="dialog-buttons"><button id="cancel-restart">接着玩</button><button class="primary" id="confirm-restart">开始新局</button></div></dialog>
+<dialog id="win-dialog"><span class="win-star">✦</span><h2 style="text-align:center">表情搭子，全员到齐！</h2><p class="win-metric" id="win-time"></p><p class="win-sub" id="win-text"></p><div class="dialog-buttons"><button class="primary" id="again">再来一局</button></div></dialog>
+<script id="engine">
+'use strict';
+const LinkGame=(()=>{
+ const dirs=[[-1,0],[0,1],[1,0],[0,-1]];
+ function findPath(board,a,b,ignoreType=false){
+  if(a.r===b.r&&a.c===b.c||!board[a.r]?.[a.c]||!board[b.r]?.[b.c]||!ignoreType&&board[a.r][a.c]!==board[b.r][b.c])return null;
+  const rows=board.length,cols=board[0].length,best=Array.from({length:rows},()=>Array.from({length:cols},()=>[3,3,3,3]));
+  const queue=[{r:a.r,c:a.c,d:-1,t:0,prev:null}];
+  for(let head=0;head<queue.length;head++){
+   const p=queue[head];
+   for(let d=0;d<4;d++){
+    if(p.d>=0&&d===(p.d+2)%4)continue;
+    const r=p.r+dirs[d][0],c=p.c+dirs[d][1],t=p.t+(p.d>=0&&p.d!==d?1:0);
+    if(r<0||c<0||r>=rows||c>=cols||t>2||best[r][c][d]<=t)continue;
+    if(board[r][c]&&!(r===b.r&&c===b.c))continue;
+    best[r][c][d]=t;const node={r,c,d,t,prev:p};
+    if(r===b.r&&c===b.c){const path=[];for(let cur=node;cur;cur=cur.prev)path.unshift({r:cur.r,c:cur.c});return path.filter((v,i)=>i===0||i===path.length-1||(v.r-path[i-1].r!==path[i+1].r-v.r)||(v.c-path[i-1].c!==path[i+1].c-v.c));}
+    queue.push(node);
+   }
+  }return null;
+ }
+ function cells(board){const result=[];for(let r=1;r<board.length-1;r++)for(let c=1;c<board[0].length-1;c++)if(board[r][c])result.push({r,c});return result;}
+ function findPair(board){const groups=new Map();for(const p of cells(board)){const value=board[p.r][p.c];if(!groups.has(value))groups.set(value,[]);groups.get(value).push(p);}for(const group of groups.values())for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++){const path=findPath(board,group[i],group[j]);if(path)return {a:group[i],b:group[j],path};}return null;}
+ function randomize(values){for(let i=values.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[values[i],values[j]]=[values[j],values[i]];}return values;}
+ function reshuffle(board){
+  const occupied=cells(board);if(!occupied.length)return null;const values=occupied.map(p=>board[p.r][p.c]);
+  for(let tries=0;tries<30;tries++){randomize(values);occupied.forEach((p,i)=>{board[p.r][p.c]=values[i];});const pair=findPair(board);if(pair)return pair;}
+  for(let i=0;i<occupied.length;i++)for(let j=i+1;j<occupied.length;j++){const a=occupied[i],b=occupied[j];if(!findPath(board,a,b,true))continue;const match=occupied.find(p=>(p.r!==a.r||p.c!==a.c)&&board[p.r][p.c]===board[a.r][a.c]);if(match){[board[b.r][b.c],board[match.r][match.c]]=[board[match.r][match.c],board[b.r][b.c]];return {a,b,path:findPath(board,a,b)};}}
+  throw new Error('Unable to prepare a move');
+ }
+ function makeBoard(cols,rows){const board=Array.from({length:rows+2},()=>Array(cols+2).fill(0)),values=[];for(let i=0;i<rows*cols/2;i++)values.push(i%5+1,i%5+1);randomize(values);for(let r=1;r<=rows;r++)for(let c=1;c<=cols;c++)board[r][c]=values.shift();reshuffle(board);return board;}
+ return {findPath,findPair,reshuffle,makeBoard,cells};
+})();
+</script>
+<script>
+(()=>{
+ const $=s=>document.querySelector(s),names=['发呆厚泽','微笑厚泽','嘟嘴厚泽','惊讶厚泽','开心厚泽'];
+ let cols=8,rows=10,board,selected=null,pair=null,removed=0,hints=3,shuffles=3,busy=false,version=0,won=false,elapsed=0,segment=null,started=false,sound=true,audioCtx,toastTimer,pendingSize=null;
+ const tileMap=new Map(),key=p=>`${p.r},${p.c}`;
+ try{sound=localStorage.getItem('houze-link-sound')!=='off';}catch{}
+ const now=()=>elapsed+(segment===null?0:performance.now()-segment);
+ const format=ms=>{const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+ const storageKey=()=>`houze-link-best-${cols}x${rows}`;
+ function bestTime(){try{return Number(localStorage.getItem(storageKey()))||0;}catch{return 0;}}
+ function notify(text){clearTimeout(toastTimer);$('#toast').textContent=text;$('#toast').classList.add('visible');toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),2000);}
+ function note(text){$('#note').textContent=text;}
+ function unlock(){if(!sound)return;try{audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state!=='running')audioCtx.resume().catch(()=>{});}catch{}}
+ function ding(win=false){if(!sound||!audioCtx||audioCtx.state!=='running')return;try{for(const [delay,freq] of win?[[0,784],[.13,988],[.26,1175]]:[[0,1175]]){const o=audioCtx.createOscillator(),g=audioCtx.createGain(),t=audioCtx.currentTime+delay;o.type='sine';o.frequency.setValueAtTime(freq,t);o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.005);g.gain.exponentialRampToValueAtTime(.0001,t+.28);o.start(t);o.stop(t+.3);o.onended=()=>{o.disconnect();g.disconnect();};}}catch{}}
+ function soundUI(){$('#sound').textContent=sound?'♪ 提示音开':'♪ 提示音关';$('#sound').setAttribute('aria-pressed',String(sound));}
+ function stopClock(){if(segment!==null){elapsed+=performance.now()-segment;segment=null;}}
+ function resumeClock(){if(started&&!won&&!document.hidden&&!document.querySelector('dialog[open]'))segment=performance.now();}
+ function showDialog(d){stopClock();d.showModal();}
+ function closeDialog(d){d.close();resumeClock();}
+ function startClock(){if(!started){started=true;segment=performance.now();}}
+ function getTile(p){return tileMap.get(key(p));}
+ function clearSelect(){if(selected)getTile(selected)?.classList.remove('selected');selected=null;}
+ function update(){$('#pairs').textContent=removed/2;$('#total').textContent=` / ${cols*rows/2} 对`;$('#progress').style.width=(removed/(cols*rows)*100)+'%';$('#hint-count').textContent=hints;$('#shuffle-count').textContent=shuffles;$('#hint').disabled=busy||won||!hints;$('#shuffle').disabled=busy||won||!shuffles;$('#pause').disabled=won;}
+ function renderBoard(){tileMap.clear();const fragment=document.createDocumentFragment();for(let r=1;r<=rows;r++)for(let c=1;c<=cols;c++){const value=board[r][c],button=document.createElement('button');button.type='button';button.className='tile'+(!value?' empty':'');button.dataset.type=value-1;button.setAttribute('aria-label',value?`${names[value-1]}，第${r}行第${c}列`:'已消除');button.tabIndex=value?0:-1;if(value){const img=document.createElement('img');img.src=`face-${value-1}.jpg`;img.alt='';img.draggable=false;button.append(img);}button.onclick=()=>choose({r,c});tileMap.set(key({r,c}),button);fragment.append(button);}$('#grid').replaceChildren(fragment);$('#grid').style.setProperty('--cols',cols);}
+ function drawPath(path){const shell=$('#shell').getBoundingClientRect(),grid=$('#grid').getBoundingClientRect(),first=getTile({r:1,c:1}).getBoundingClientRect(),gap=4;const points=path.map(p=>{const x=p.c===0?5:p.c===cols+1?shell.width-5:grid.left-shell.left+(p.c-1)*(first.width+gap)+first.width/2;const y=p.r===0?5:p.r===rows+1?shell.height-5:grid.top-shell.top+(p.r-1)*(first.height+gap)+first.height/2;return `${x},${y}`;}).join(' ');$('#links').setAttribute('viewBox',`0 0 ${shell.width} ${shell.height}`);$('#links').innerHTML=`<polyline points="${points}"/><polyline points="${points}"/>`;}
+ function choose(p){if(busy||won||document.querySelector('dialog[open]')||!board[p.r][p.c])return;unlock();startClock();document.querySelectorAll('.hinted').forEach(el=>el.classList.remove('hinted'));if(!selected){selected=p;getTile(p).classList.add('selected');note('再选一张相同的照片');return;}if(key(selected)===key(p)){clearSelect();note('选两张相同照片，连线最多转弯两次');return;}const a=selected,path=LinkGame.findPath(board,a,p);clearSelect();if(!path){const button=getTile(p);button.classList.remove('wrong');void button.offsetWidth;button.classList.add('wrong');selected=p;button.classList.add('selected');note(board[a.r][a.c]!==board[p.r][p.c]?'表情不同，再找找它的搭子':'这条路被挡住了，试试别的搭子');return;}busy=true;drawPath(path);ding();getTile(a).classList.add('matched');getTile(p).classList.add('matched');update();const current=version;setTimeout(()=>{if(current!==version)return;board[a.r][a.c]=board[p.r][p.c]=0;removed+=2;for(const cell of [a,p]){const el=getTile(cell);el.className='tile empty';el.tabIndex=-1;el.setAttribute('aria-label','已消除');}$('#links').replaceChildren();busy=false;if(removed===cols*rows){finish();return;}pair=LinkGame.findPair(board);if(!pair){pair=LinkGame.reshuffle(board);renderBoard();notify('没有可连组合，已免费洗牌');}note('连上啦！继续找下一对');update();},240);}
+ function newGame(){version++;[cols,rows]=$('#size').value.split(',').map(Number);board=LinkGame.makeBoard(cols,rows);pair=LinkGame.findPair(board);selected=null;removed=0;hints=shuffles=3;busy=won=started=false;elapsed=0;segment=null;$('#time').textContent='00:00';$('#links').replaceChildren();$('#mode-label').textContent=`${cols} × ${rows} · ${cols*rows} 格`;const best=bestTime();$('#best').textContent=best?format(best):'—';renderBoard();update();note('选两张相同照片，连线最多转弯两次');}
+ function finish(){stopClock();won=true;const duration=Math.round(now()),best=bestTime(),record=!best||duration<best;if(record){try{localStorage.setItem(storageKey(),String(duration));}catch{}$('#best').textContent=format(duration);}$('#time').textContent=format(duration);$('#win-time').textContent=format(duration);$('#win-text').textContent=`${cols*rows/2} 对表情全部消除${record?' · 刷新最快纪录！':' · 配合满分！'}`;note('全部配对成功！');update();ding(true);showDialog($('#win-dialog'));}
+ $('#hint').onclick=()=>{if(busy||won||!hints)return;unlock();startClock();clearSelect();pair=LinkGame.findPair(board);if(!pair)return;hints--;getTile(pair.a).classList.remove('hinted');getTile(pair.b).classList.remove('hinted');void getTile(pair.a).offsetWidth;getTile(pair.a).classList.add('hinted');getTile(pair.b).classList.add('hinted');note('这两张在闪光，点它们试试');update();};
+ $('#shuffle').onclick=()=>{if(busy||won||!shuffles)return;unlock();startClock();shuffles--;clearSelect();pair=LinkGame.reshuffle(board);renderBoard();note('新位置，新搭子！');update();};
+ $('#sound').onclick=()=>{sound=!sound;try{localStorage.setItem('houze-link-sound',sound?'on':'off');}catch{}soundUI();if(sound){unlock();if(audioCtx)audioCtx.resume().then(()=>ding()).catch(()=>{});}};
+ $('#help').onclick=()=>showDialog($('#help-dialog'));$('#close-help').onclick=$('.modal-close').onclick=()=>closeDialog($('#help-dialog'));
+ $('#pause').onclick=()=>{if(!won)showDialog($('#pause-dialog'));};$('#resume').onclick=()=>closeDialog($('#pause-dialog'));
+ function confirmNew(size=null){if(busy){if(size)$('#size').value=`${cols},${rows}`;return;}if(!started||won){newGame();return;}pendingSize=size;showDialog($('#restart-dialog'));}
+ $('#restart').onclick=()=>confirmNew();$('#size').onchange=()=>confirmNew($('#size').value);
+ $('#cancel-restart').onclick=()=>{if(pendingSize)$('#size').value=`${cols},${rows}`;pendingSize=null;closeDialog($('#restart-dialog'));};
+ $('#confirm-restart').onclick=()=>{$('#restart-dialog').close();pendingSize=null;newGame();};$('#again').onclick=()=>{$('#win-dialog').close();newGame();};
+ document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('close',()=>{if(d.id==='restart-dialog'&&pendingSize){$('#size').value=`${cols},${rows}`;pendingSize=null;}if(segment===null)resumeClock();});});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stopClock();if(started&&!won&&!document.querySelector('dialog[open]'))$('#pause-dialog').showModal();}else if(!document.querySelector('dialog[open]'))resumeClock();});
+ setInterval(()=>{if(!won)$('#time').textContent=format(now());},250);window.addEventListener('resize',()=>$('#links').replaceChildren());soundUI();newGame();
+})();
+</script></body></html>
+
